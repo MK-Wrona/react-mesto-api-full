@@ -7,7 +7,7 @@ class Api {
         
         // возьми сет карточек сервака
     getInitialCards() {
-            return fetch(`${this._adress}/cards`, { headers: this._headers })
+            return fetch(`${this._adress}/cards`, { headers: this._headers, credentials:"include" })
                 .then(response => this._checkRequestResult(response));
 
         }
@@ -23,7 +23,7 @@ class Api {
         }
         //получи данные пользователя с сервера
     getUserInfo() {
-        return fetch(`${this._adress}/users/me`, { headers: this._headers })
+        return fetch(`${this._adress}/users/me`, { headers: this._headers, credentials:"include" })
             .then(response => this._checkRequestResult(response));
     }
 
@@ -31,6 +31,7 @@ class Api {
     editUserInfo(name, profession) {
         return fetch(`${this._adress}/users/me`, {
                 method: 'PATCH',
+                credentials:"include",
                 headers: this._headers,
                 body: JSON.stringify({
                     name: name,
@@ -45,6 +46,7 @@ class Api {
             return fetch(`${this._adress}/cards`, {
                     method: 'POST',
                     headers: this._headers,
+                    credentials:"include",
                     body: JSON.stringify({
                         name: name,
                         link: link
@@ -57,6 +59,7 @@ class Api {
         return fetch(`${this._adress}/cards/${cardId}`, {
                 method: 'DELETE',
                 headers: this._headers,
+                credentials:"include"
             })
             .then(response => this._checkRequestResult(response));
     }
@@ -66,6 +69,7 @@ class Api {
         return fetch(`${this._adress}/cards/likes/${cardId}`, {
                 method: 'PUT',
                 headers: this._headers,
+                credentials:"include"
             })
             .then(response => this._checkRequestResult(response));
     }
@@ -75,6 +79,7 @@ class Api {
         return fetch(`${this._adress}/cards/likes/${cardId}`, {
                 method: 'DELETE',
                 headers: this._headers,
+                credentials:"include"
             })
             .then(response => this._checkRequestResult(response));
     }
@@ -87,6 +92,7 @@ class Api {
         return fetch(`${this._adress}/users/me/avatar`, {
                 method: 'PATCH',
                 headers: this._headers,
+                credentials:"include",
                 body: JSON.stringify({
                     avatar: urlAvatar
                 })
