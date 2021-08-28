@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://daru.students.nomoredomains.monster/api';
+export const BASE_URL = 'http://backend.daru.students.nomoredomains.rocks/api';
 
 const checkRequestResult = (res) => {
   if (res.ok) {
