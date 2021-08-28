@@ -25,24 +25,16 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-const exceptionList = [
-  'http://daru.students.nomoredomains.monster',
-  'http://backend.daru.students.nomoredomains.rocks',
-  'https://localhost:3000',
-];
-
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-  }),
-  cors({
-    credentials: true,
-    origin:true,
-  }),
-);
-
-app.options('*', cors());
+const corsOptions = {
+  origin: [
+    'http://daru.students.nomoredomains.monster',
+    'http://backend.daru.students.nomoredomains.rocks',
+     'http://84.252.131.82',
+     'https://localhost:3000'
+  ],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // middlewares
 app.use(express.json());
