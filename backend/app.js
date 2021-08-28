@@ -12,6 +12,7 @@ const cardsRouter = require('./routes/cards');
 const { login } = require('./controllers/users');
 const { createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/err_logger');
+const cors = require('cors');
 
 const auth = require('./middlewares/auth');
 
