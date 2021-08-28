@@ -1,0 +1,13 @@
+.initial-page__login {
+  font-size: 14px;
+  font-weight: 400;
+  color:white;
+  padding: 15px 0 0px;
+  text-decoration: none;
+  
+}
+.initial-page__login:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.5s linear;
+}

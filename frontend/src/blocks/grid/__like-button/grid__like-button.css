@@ -1,0 +1,21 @@
+.grid__like-button {
+    width: 22px;
+    height: 19px;
+    background-color: #FFFFFF;
+    background-image: url(../../../images/heart-svg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+}
+
+.grid__like-button:hover {
+    opacity: 0.5;
+}
+
+.grid__like-button:active {
+    background-image: url(../../../images/heart-shaped-black.svg);
+    opacity: 1;
+}

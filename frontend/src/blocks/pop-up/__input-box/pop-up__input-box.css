@@ -1,0 +1,8 @@
+.pop-up__input-box {
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.pop-up__input-box:nth-of-type(odd) {
+    margin-bottom: 30px;
+}

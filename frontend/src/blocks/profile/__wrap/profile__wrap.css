@@ -1,0 +1,6 @@
+.profile__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 22px;
+}

@@ -1,0 +1,12 @@
+.grid__delete {
+    width: 18px;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    z-index: 10;
+}
+
+.grid__delete:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

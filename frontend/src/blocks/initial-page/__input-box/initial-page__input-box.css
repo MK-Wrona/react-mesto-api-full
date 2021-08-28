@@ -1,0 +1,5 @@
+.initial-page__input-box{
+    padding-bottom: 220px;
+    display: flex;
+    flex-direction: column;
+}

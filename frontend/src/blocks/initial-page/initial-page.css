@@ -1,0 +1,12 @@
+.initial-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 55px;
+    padding-bottom: 117px;
+    background-color: black;
+    height: 100%;
+   
+    
+    
+  }

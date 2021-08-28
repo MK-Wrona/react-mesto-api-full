@@ -1,0 +1,9 @@
+.initial-page_register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 55px;
+    padding-bottom: 86px;
+    background-color: black;
+    height: 100%;
+}

@@ -1,0 +1,7 @@
+.grid__description-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 246px;
+    margin-left: 24px;
+    margin-right: 15px;
+}
