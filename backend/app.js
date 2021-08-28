@@ -11,6 +11,7 @@ const userRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const { login } = require('./controllers/users');
 const { createUser } = require('./controllers/users');
+const { requestLogger, errorLogger } = require('./middlewares/err_logger');
 
 const auth = require('./middlewares/auth');
 
@@ -24,10 +25,37 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
+const exceptionList = [
+  'http://daru.students.nomoredomains.monster',
+  'http://backend.daru.students.nomoredomains.rocks',
+  'https://localhost:3000',
+];
+
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+  }),
+  helmet(),
+  cors({
+    credentials: true,
+    origin(origin, callback) {
+      if (exceptionList.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  }),
+);
+
+app.options('*', cors());
+
 // middlewares
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
+app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -52,6 +80,9 @@ app.use('/', userRouter);
 app.use('/', cardsRouter);
 // запрос по несуществующему руту
 app.use('*', () => { throw new NotFoundError('Запрашиваемый ресурс не найден.'); });
+
+//логгер ошибок перед централизованным обработчиком
+app.use(errorLogger);
 
 app.use(errors());
 // централизованная обработка ошибок приложения
