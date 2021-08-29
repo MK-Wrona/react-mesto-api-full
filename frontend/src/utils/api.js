@@ -7,7 +7,7 @@ class Api {
         
         // возьми сет карточек сервака
     getInitialCards() {
-            return fetch(`${this._BASE_URL}/cards`, { headers: this._headers })
+            return fetch(`${this._BASE_URL}/cards`, { headers: this._headers, credentials:"include" })
                 .then(response => this._checkRequestResult(response));
 
         }
@@ -23,7 +23,7 @@ class Api {
         }
         //получи данные пользователя с сервера
     getUserInfo() {
-        return fetch(`${this._BASE_URL}/users/me`, { headers: this._headers })
+        return fetch(`${this._BASE_URL}/users/me`, { headers: this._headers, credentials:"include" })
             .then(response => this._checkRequestResult(response));
     }
 
