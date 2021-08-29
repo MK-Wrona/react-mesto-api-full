@@ -101,7 +101,7 @@ const login = (req, res, next) => {
       res.cookie('jwt', token, {
         httpOnly: true,
         sameSite: 'None',
-        secure: false,
+        secure: true,
       }).end(res.send({ message: 'Записано.' }));
       // console.log(res.cookie);
       // .send({ token });
