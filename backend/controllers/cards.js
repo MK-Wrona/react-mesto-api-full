@@ -31,17 +31,14 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  const { _id } = req.params;
-  Card.findById(_id)
+  const ownerID = req.user._id;
+  Card.findById(req.params._id)
     .orFail(() => new NotFoundError('Карточка не найдена'))
     .then((card) => {
-      if (JSON.stringify(req.user._id) === JSON.stringify(card.owner)) {
-        Card.findByIdAndRemove(_id)
-          .then((result) => {
-            res.send(result);
-          });
-      } else {
+      if (String(card.owner) !== ownerID) {
         throw new AccessDeniedError('Вы не обладаете достаточными правами для удаления карточки.');
+      } else {
+        card.deleteOne();
       }
     })
     .catch(next);
