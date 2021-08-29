@@ -7,12 +7,12 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 // const fs = require("fs")
+const cors = require('cors');
 const userRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const { login } = require('./controllers/users');
 const { createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/err_logger');
-const cors = require('cors');
 
 const auth = require('./middlewares/auth');
 
@@ -26,17 +26,16 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-cors({credentials: true,  origin: true})
-//const corsOptions = {
- // origin: [
-//    'http://daru.students.nomoredomains.monster',
-  //  'http://backend.daru.students.nomoredomains.rocks',
-    // 'http://84.252.131.82',
-     //'https://localhost:3000'
-//  ],
-//  credentials: true,
-//};
-//app.use(cors(corsOptions));
+// cors({credentials: true,  origin: true})
+const corsOptions = {
+  origin: [
+    'http://daru.students.nomoredomains.monster',
+    'https://daru.students.nomoredomains.rocks',
+    'http://84.252.131.82',
+    'http://localhost:3000',
+  ],
+  credentials: true,
+};
 
 // middlewares
 app.use(express.json());
@@ -44,6 +43,7 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(requestLogger);
 
+app.use(cors(corsOptions));
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -68,7 +68,7 @@ app.use('/', cardsRouter);
 // запрос по несуществующему руту
 app.use('*', () => { throw new NotFoundError('Запрашиваемый ресурс не найден.'); });
 
-//логгер ошибок перед централизованным обработчиком
+// логгер ошибок перед централизованным обработчиком
 app.use(errorLogger);
 
 app.use(errors());
