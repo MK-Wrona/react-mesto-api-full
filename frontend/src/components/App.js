@@ -168,9 +168,6 @@ function App() {
         .then((res) => {
           setEmail(res.data.email);
           setLoggedIn(true);
-      if (!data) {
-        throw new Error('Произошла ошибка');
-      }
         })
         .then(()=> {
           handleInfoTooltipContent({iconPath: regIsFine, text: 'Вы успешно авторизовались!'})
