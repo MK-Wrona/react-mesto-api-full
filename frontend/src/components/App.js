@@ -162,15 +162,15 @@ function App() {
   }
   // Авторизация 
   function authorization(email, password) {
-    Auth.authorize(escapeHtml(email), password )
+    auth.authorize(escapeHtml(email), password )
     .then((data) => {
-      if (!data) {
-        throw new Error('Произошла ошибка');
-      }
-      Auth.getContent(data)
+      auth.getContent(data)
         .then((res) => {
           setEmail(res.data.email);
           setLoggedIn(true);
+      if (!data) {
+        throw new Error('Произошла ошибка');
+      }
         })
         .then(()=> {
           handleInfoTooltipContent({iconPath: regIsFine, text: 'Вы успешно авторизовались!'})
