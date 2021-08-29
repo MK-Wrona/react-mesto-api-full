@@ -103,9 +103,8 @@ class Api {
 }
 
 const api = new Api({
-    adress: 'http://backend.daru.students.nomoredomains.rocks/api',
+    adress: 'http://backend.daru.students.nomoredomains.rocks',
     headers: {
-        authorization: 'bc8d3de0-e753-4646-a5ba-26caab7d3e1d',
         'Content-Type': 'application/json'
     }
 });
