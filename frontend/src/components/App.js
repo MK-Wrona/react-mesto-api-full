@@ -162,9 +162,9 @@ function App() {
   }
   // Авторизация 
   function authorization(email, password) {
-    auth.authorize(escapeHtml(email), password )
+    Auth.authorize(escapeHtml(email), password )
     .then((data) => {
-      auth.getContent(data)
+      Auth.getContent(data)
         .then((res) => {
           setEmail(res.data.email);
           setLoggedIn(true);
