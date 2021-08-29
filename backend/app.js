@@ -29,8 +29,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 // cors({credentials: true,  origin: true})
 const corsOptions = {
   origin: [
-    'http://daru.students.nomoredomains.monster',
+    'https://daru.students.nomoredomains.monster',
     'https://daru.students.nomoredomains.rocks',
+    'http://daru.students.nomoredomains.monster',
+    'http://daru.students.nomoredomains.rocks',
     'http://84.252.131.82',
     'http://localhost:3000',
   ],

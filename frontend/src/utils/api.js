@@ -103,7 +103,7 @@ class Api {
 }
 
 const api = new Api({
-    adress: 'http://backend.daru.students.nomoredomains.rocks',
+    adress: 'https://backend.daru.students.nomoredomains.rocks',
     headers: {
         'Content-Type': 'application/json'
     }
