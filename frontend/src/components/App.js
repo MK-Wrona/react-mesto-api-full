@@ -166,7 +166,7 @@ function App() {
     .then((data) => {
       Auth.getContent(data)
         .then((res) => {
-          setEmail(res.data.email);
+          setCurrentUser(res.data.email);
           setLoggedIn(true);
         })
         .then(()=> {
