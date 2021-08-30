@@ -71,6 +71,7 @@ class Api {
                 headers: this._headers,
                 credentials:"include"
             })
+            console.log(cardId)
             .then(response => this._checkRequestResult(response));
     }
 
