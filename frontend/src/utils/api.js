@@ -66,18 +66,18 @@ class Api {
 
     // +лойс
     likeCard(cardId) {
-        return fetch(`${this._adress}/cards/:_id/likes/${cardId}`, {
+        return fetch(`${this._adress}/cards/likes/${cardId}`, {
                 method: 'PUT',
                 headers: this._headers,
                 credentials:"include"
             })
-            console.log(cardId)
+            // console.log(cardId)
             .then(response => this._checkRequestResult(response));
     }
 
     // Удаление лайка карточке
     unlikeCard(cardId) {
-        return fetch(`${this._adress}/cards/:_id/likes/${cardId}`, {
+        return fetch(`${this._adress}/cards/likes/${cardId}`, {
                 method: 'DELETE',
                 headers: this._headers,
                 credentials:"include"
