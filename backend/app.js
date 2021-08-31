@@ -52,13 +52,20 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/sign-in', celebrate({
+// добрый день! касательно Вашей первой ремарки насчет неверной обработки ошибки при
+// невалидном id лайка
+// - сервер возвращает 404, потому что  Вы пытаетесь обратиться по несуществующему руту
+// роут до лайка в моем случае: /cards/likes/:_id, а Вы обращаетесь по руту '/cards/:_id/likes
+// возможно, я просто не поняла сути ошибки - в таком случае с радотсью все исправлю,
+// просто пока не понимаю до конца, спасибо с:
+
+app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
 }), login);
-app.post('/sign-up', celebrate({
+app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),

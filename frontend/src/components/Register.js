@@ -32,7 +32,7 @@ function Register({registration}) {
         </div>
         <button className="initial-page__submit">Зарегистрироваться</button>
       </form>
-      <Link className="initial-page__login" to="/sign-in">Уже зарегистрированы? Войти</Link>
+      <Link className="initial-page__login" to="/signin">Уже зарегистрированы? Войти</Link>
     </section>
   );
 }

@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 function Header({loggedIn, email, handleSignOut}) {
     const { pathname } = useLocation();
-    const text = `${pathname === '/sign-in' ? 'Регистрация' : 'Войти'}`;
-    const linkRoute = `${pathname === '/sign-in' ? '/sign-up' : '/sign-in'}`;
+    const text = `${pathname === '/signin' ? 'Регистрация' : 'Войти'}`;
+    const linkRoute = `${pathname === '/signin' ? '/signup' : '/signin'}`;
     return ( < header className = "header" >
         <img src = { mesto_logo }
         className = "header__logo"

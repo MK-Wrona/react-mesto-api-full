@@ -150,7 +150,7 @@ function App() {
         handleInfoTooltipContent({iconPath: regIsFine, text: 'Вы успешно зарегистрировались!'})
         handleInfoTooltipPopupOpen();
         /// редирект на стр входа для повтоного ввода
-        history.push("/sign-in");
+        history.push("/signin");
         // свайпнули модалку через 1 сек
         setTimeout(closeAllPopups, 1000);
     }).catch((err)=> {
@@ -191,7 +191,7 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     setEmail('');
-    history.push('/sign-in');
+    history.push('/signin');
   }
 
   return (
@@ -209,18 +209,18 @@ function App() {
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
           /> 
-          <Route path="/sign-in">
+          <Route path="/signin">
            <Login 
            authorization={authorization}
             />
             </Route>
-            <Route path="/sign-up">
+            <Route path="/signup">
             <Register 
             registration={registration}
             />
           </Route>
           <Route path="/">
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
           </Route>
         </Switch>
         <Footer />
