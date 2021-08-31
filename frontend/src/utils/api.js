@@ -66,7 +66,7 @@ class Api {
 
     // +лойс
     likeCard(cardId) {
-        return fetch(`${this._adress}/cards/likes/${cardId}`, {
+        return fetch(`${this._adress}/cards/${cardId}/likes`, {
                 method: 'PUT',
                 headers: this._headers,
                 credentials:"include"
@@ -77,7 +77,7 @@ class Api {
 
     // Удаление лайка карточке
     unlikeCard(cardId) {
-        return fetch(`${this._adress}/cards/likes/${cardId}`, {
+        return fetch(`${this._adress}/cards/${cardId}/likes`, {
                 method: 'DELETE',
                 headers: this._headers,
                 credentials:"include"
